@@ -1,8 +1,9 @@
 pipeline {
     agent any 
     stages {
-        stage('Stage 1') {
+        stage('Verify Branch') {
             steps {
+                echo $GIT_BRANCH
                 echo 'Hello world!' 
             }
         }
