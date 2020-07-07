@@ -7,8 +7,8 @@ pipeline {
                 echo "Ok"
             }
         }
-        stage 'Checkout'
-		checkout scm
+        //stage 'Checkout'
+		//checkout scm
 
 	//stage 'Build'
 		//bat 'nuget restore SolutionName.sln'
