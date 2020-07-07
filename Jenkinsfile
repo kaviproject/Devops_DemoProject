@@ -2,9 +2,11 @@ pipeline {
     agent any
      environment {
         CONFIG = 'Release'
+	NUGETPKG_LOCATION="C:\\Program Files (X86)\\NuGet\\nuget.exe"
+	SOLUTION_NAME="Devops_Demo"
           }
     stages {
-        stage('Ok') {
+        stage('environment variable checking') {
             steps {
                 echo "Ok"
 		echo "${env.CONFIG}"
@@ -12,7 +14,8 @@ pipeline {
         }    
 	  stage('Restorng Packages') {
             steps {
-                 bat '"C:\\Program Files (X86)\\NuGet\\nuget.exe" restore Devops_Demo.sln'
+		    bat '"${env.NUGETPKG_LOCATION}" restore "${env.SOLUTION_NAME}"'
+                 //bat '"C:\\Program Files (X86)\\NuGet\\nuget.exe" restore Devops_Demo.sln'
 		 //bat '"C:\\Program Files (X86)\\NuGet\\nuget.exe" restore "C:\\Program Files (X86)\\Jenkins\\wokspace\\Pipeline POC1\\Devops_Demo.sln"'
             }
         }
