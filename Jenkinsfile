@@ -16,7 +16,7 @@ pipeline {
         }
 	  stage('Build') {
             steps {
-               bat "\"${tool 'MSBuild'}\\msbuild.exe\" Devops_Demo.sln /t:clean;build;package"
+               bat "\"${tool 'MSBuild'}\\msbuild.exe\" Devops_Demo.sln /t:clean;build;package /p:PackageFileName="Devops_Demo.zip""
             }
         }
 	 
