@@ -14,7 +14,7 @@ pipeline {
                 echo "Ok"
 		echo "${env.CONFIG}"
 		echo "${env.NUGETPKG_LOCATION}"
-		    powershell -Command 
+		    
             }
         }    
 	  stage('Restoring Packages') {
