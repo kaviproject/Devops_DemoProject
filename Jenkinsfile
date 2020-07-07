@@ -8,10 +8,15 @@ pipeline {
             }
         }
 	    
-	  stage('Build') {
+	  stage('Restorng Packages') {
             steps {
                  bat '"C:\\Program Files (X86)\\NuGet\\nuget.exe" restore Devops_Demo.sln'
 		 //bat '"C:\\Program Files (X86)\\NuGet\\nuget.exe" restore "C:\\Program Files (X86)\\Jenkins\\wokspace\\Pipeline POC1\\Devops_Demo.sln"'
+            }
+        }
+	  stage('Build') {
+            steps {
+               bat "\"${tool 'MSBuild'}\" Devops_Demo.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}"
             }
         }
 	 
