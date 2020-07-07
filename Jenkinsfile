@@ -10,7 +10,7 @@ pipeline {
 	    
 	  stage('Build') {
             steps {
-                 bat 'nuget restore Devops_Demo.sln'
+                 bat 'nuget restore C:\Pogram Files (X86)\Jenkins\wokspace\Pipeline POC1\Devops_Demo.sln'
             }
         }
 	 
