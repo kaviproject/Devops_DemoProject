@@ -9,7 +9,7 @@ pipeline {
         stage('Ok') {
             steps {
                 echo "Ok"
-		echo ${env.CONFIG}
+		echo "${env.CONFIG}"
             }
         }    
 	  stage('Restorng Packages') {
