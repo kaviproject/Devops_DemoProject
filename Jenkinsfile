@@ -3,10 +3,13 @@ pipeline {
     stages {
         stage('Verify Branch') {
             steps {
-                echo 'Hello world!' 
-                 sh "echo Hello from the shell"
-                sh "hostname"
-                sh "uptime"
+                echo 'Hello world!'
+            }
+        }
+        post
+        {
+            always{
+                emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
             }
         }
     }
