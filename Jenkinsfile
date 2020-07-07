@@ -1,5 +1,5 @@
 def NUGETPKG_LOCATION="C:\\Program Files (X86)\\NuGet\\nuget.exe"
-def SOLUTION_NAME="Devops_Demo"
+set SOLUTION_NAME="Devops_Demo"
 pipeline {
     agent any
      environment {
@@ -14,11 +14,12 @@ pipeline {
                 echo "Ok"
 		echo "${env.CONFIG}"
 		echo "${env.NUGETPKG_LOCATION}"
+		    powershell -Command 
             }
         }    
 	  stage('Restoring Packages') {
             steps {
-		 bat '$NUGETPKG_LOCATION restore $SOLUTION_NAME.sln'
+		 bat '"C:\\Program Files (X86)\\NuGet\\nuget.exe" restore %SOLUTION_NAME%.sln'
                  bat '"C:\\Program Files (X86)\\NuGet\\nuget.exe" restore Devops_Demo.sln'
 		 //bat '"C:\\Program Files (X86)\\NuGet\\nuget.exe" restore "C:\\Program Files (X86)\\Jenkins\\wokspace\\Pipeline POC1\\Devops_Demo.sln"'
             }
