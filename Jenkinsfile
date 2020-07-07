@@ -42,7 +42,7 @@ pipeline {
 		//archive 'ProjectName/bin/Release/**'
     }
     post {
-        always {
+        failure {
             emailext body: 'Pipeline code testing with email service', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'PipelineScript Email Testing'
         }
     }
