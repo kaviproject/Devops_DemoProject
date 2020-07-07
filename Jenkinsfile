@@ -7,10 +7,13 @@ pipeline {
                 echo "Ok"
             }
         }
-	    stage()
-	    {
-		    bat 'nuget restore Devops_Demo.sln'
-	    }
+	    
+	  stage('Build') {
+            steps {
+                 bat 'nuget restore SolutionName.sln'
+            }
+        }
+	 
         //stage 'Checkout'
 		//checkout scm
 
@@ -20,9 +23,6 @@ pipeline {
 
 	//stage 'Archive'
 		//archive 'ProjectName/bin/Release/**'
-	    
-	
-
     }
     post {
         always {
