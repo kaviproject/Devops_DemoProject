@@ -1,10 +1,8 @@
 pipeline {
     agent any
      environment {
-    //MSBUILD = "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin"
-    CONFIG = 'Release'
-    //PLATFORM = 'x64'
-  }
+        CONFIG = 'Release'
+          }
     stages {
         stage('Ok') {
             steps {
