@@ -3,7 +3,7 @@ pipeline {
      environment {
     //MSBUILD = "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin"
     CONFIG = 'Release'
-    PLATFORM = 'x64'
+    //PLATFORM = 'x64'
   }
     stages {
         stage('Ok') {
