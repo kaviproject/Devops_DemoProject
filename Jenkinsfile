@@ -1,16 +1,16 @@
 pipeline {
-    agent any 
+    agent any
+     
     stages {
-        stage('Verify Branch') {
+        stage('Ok') {
             steps {
-                echo 'Hello world!'
+                echo "Ok"
             }
         }
-        post
-        {
-            always{
-                emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-            }
+    }
+    post {
+        always {
+            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
         }
     }
 }
