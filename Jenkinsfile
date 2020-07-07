@@ -10,7 +10,7 @@ pipeline {
 	    
 	  stage('Build') {
             steps {
-                 bat 'nuget restore SolutionName.sln'
+                 bat 'nuget restore Devops_Demo.sln'
             }
         }
 	 
