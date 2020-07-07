@@ -1,3 +1,5 @@
+def NUGETPKG_LOCATION="C:\\Program Files (X86)\\NuGet\\nuget.exe"
+	def SOLUTION_NAME="Devops_Demo"
 pipeline {
     agent any
      environment {
@@ -5,8 +7,7 @@ pipeline {
 	NUGETPKG_LOCATION="C:\\Program Files (X86)\\NuGet\\nuget.exe"
 	SOLUTION_NAME="Devops_Demo"
           }
-	def NUGETPKG_LOCATION="C:\\Program Files (X86)\\NuGet\\nuget.exe"
-	def SOLUTION_NAME="Devops_Demo"
+	
     stages {
         stage('environment variable checking') {
             steps {
