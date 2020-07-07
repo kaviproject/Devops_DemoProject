@@ -14,7 +14,7 @@ pipeline {
                 echo "Ok"
 		echo "${env.CONFIG}"
 		echo "${env.NUGETPKG_LOCATION}"
-		pwsh 'Write-Output "Hello, World!"'
+		powershell 'Write-Output "Hello, World!"'
 		    
             }
         }    
