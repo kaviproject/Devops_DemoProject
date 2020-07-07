@@ -18,7 +18,7 @@ pipeline {
         }    
 	  stage('Restorng Packages') {
             steps {
-		    bat '${env.NUGETPKG_LOCATION} restore ${env.SOLUTION_NAME}.sln'
+		    bat '${NUGETPKG_LOCATION} restore ${SOLUTION_NAME}.sln'
                  bat '"C:\\Program Files (X86)\\NuGet\\nuget.exe" restore Devops_Demo.sln'
 		 //bat '"C:\\Program Files (X86)\\NuGet\\nuget.exe" restore "C:\\Program Files (X86)\\Jenkins\\wokspace\\Pipeline POC1\\Devops_Demo.sln"'
             }
