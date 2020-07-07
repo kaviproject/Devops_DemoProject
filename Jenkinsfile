@@ -1,13 +1,17 @@
 pipeline {
     agent any
-     
+     environment {
+    MSBUILD = "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin"
+    CONFIG = 'Release'
+    PLATFORM = 'x64'
+  }
     stages {
         stage('Ok') {
             steps {
                 echo "Ok"
+		echo ${env.CONFIG}
             }
-        }
-	    
+        }    
 	  stage('Restorng Packages') {
             steps {
                  bat '"C:\\Program Files (X86)\\NuGet\\nuget.exe" restore Devops_Demo.sln'
