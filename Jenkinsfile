@@ -7,6 +7,10 @@ pipeline {
                 echo "Ok"
             }
         }
+	    stage()
+	    {
+		    bat 'nuget restore Devops_Demo.sln'
+	    }
         //stage 'Checkout'
 		//checkout scm
 
