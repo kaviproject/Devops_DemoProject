@@ -5,6 +5,8 @@ pipeline {
 	NUGETPKG_LOCATION="C:\\Program Files (X86)\\NuGet\\nuget.exe"
 	SOLUTION_NAME="Devops_Demo"
           }
+	def NUGETPKG_LOCATION="C:\\Program Files (X86)\\NuGet\\nuget.exe"
+	def SOLUTION_NAME="Devops_Demo"
     stages {
         stage('environment variable checking') {
             steps {
@@ -15,7 +17,7 @@ pipeline {
         }    
 	  stage('Restorng Packages') {
             steps {
-		   // bat '${env.NUGETPKG_LOCATION} restore ${env.SOLUTION_NAME}.sln'
+		    bat '${env.NUGETPKG_LOCATION} restore ${env.SOLUTION_NAME}.sln'
                  bat '"C:\\Program Files (X86)\\NuGet\\nuget.exe" restore Devops_Demo.sln'
 		 //bat '"C:\\Program Files (X86)\\NuGet\\nuget.exe" restore "C:\\Program Files (X86)\\Jenkins\\wokspace\\Pipeline POC1\\Devops_Demo.sln"'
             }
