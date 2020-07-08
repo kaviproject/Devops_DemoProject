@@ -49,7 +49,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                bat "\"${tool 'MSBuild'}\\msbuild.exe\" "${SOLUTION_NAME_BASE}".sln /t:clean;build;package /p:PackageFileName=Devops_Demo.zip /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}"
+                bat "\"${tool 'MSBuild'}\\msbuild.exe\" ${SOLUTION_NAME_BASE}.sln /t:clean;build;package /p:PackageFileName=Devops_Demo.zip /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}"
             }
         }
         stage('Approve PROD Deploy') {
