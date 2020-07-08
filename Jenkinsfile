@@ -2,6 +2,9 @@ def NUGETPKG_LOCATION="C:\\Program Files (X86)\\NuGet\\nuget.exe"
 def SOLUTION_NAME="Devops_Demo"
 pipeline {
     agent any
+	  parameters {
+        string(defaultValue: "fgfgd", description: 'K', name: 'HELLO')
+    }
      environment {
         CONFIG = 'Release'
 	NUGETPKG_LOCATION="C:\\Program Files (X86)\\NuGet\\nuget.exe"
@@ -10,6 +13,12 @@ pipeline {
 	
     stages {
         stage('environment variable checking') {
+		
+		 stage('PrintParameter'){
+            steps{
+                sh 'echo ${HELLO}'
+            }
+        }
 		when {
 			 branch 'refs/remotes/origin/master'
 		    }
