@@ -3,7 +3,7 @@ def SOLUTION_NAME="Devops_Demo"
 pipeline {
     agent any
 	  parameters {
-        string(defaultValue: "", description: 'K', name: 'HELLO')
+        //string(defaultValue: "", description: 'K', name: 'HELLO')
         choice(choices: ['Windows', 'Linux'], description: 'What OS?', name: 'PickAnOS')
     }
      environment {
@@ -15,7 +15,7 @@ pipeline {
     stages {
 	     stage('PrintParameter'){
             steps{
-                echo "${params.HELLO}"
+               // echo "${params.HELLO}"
 		     echo "${params.PickAnOS}"
 		    
             }
