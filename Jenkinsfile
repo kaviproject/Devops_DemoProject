@@ -43,13 +43,13 @@ pipeline {
         stage('Restoring Packages') {
             steps {
                 // bat '"C:\\Program Files (X86)\\NuGet\\nuget.exe" restore ${SOLUTION_NAME}.sln'
-                bat '"C:\\Program Files (X86)\\NuGet\\nuget.exe" restore "${SOLUTION_NAME_BASE}".sln'
+                bat '"C:\\Program Files (X86)\\NuGet\\nuget.exe" restore Devops_Demo.sln'
                 //bat '"C:\\Program Files (X86)\\NuGet\\nuget.exe" restore "C:\\Program Files (X86)\\Jenkins\\wokspace\\Pipeline POC1\\Devops_Demo.sln"'
             }
         }
         stage('Build') {
             steps {
-                bat "\"${tool 'MSBuild'}\\msbuild.exe\" ${SOLUTION_NAME_BASE}.sln /t:clean;build;package /p:PackageFileName=Devops_Demo.zip /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}"
+                bat "\"${tool 'MSBuild'}\\msbuild.exe\" Devops_Demo.sln /t:clean;build;package /p:PackageFileName=Devops_Demo.zip /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}"
             }
         }
         stage('Approve PROD Deploy') {
