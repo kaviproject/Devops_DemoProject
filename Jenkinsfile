@@ -30,7 +30,25 @@ pipeline {
                bat "\"${tool 'MSBuild'}\\msbuild.exe\" Devops_Demo.sln /t:clean;build;package /p:PackageFileName=Devops_Demo.zip /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}"
             }
         }
-	 
+	 stage('Approve PROD Deploy') {
+         when {
+            branch 'master'
+         }
+         options {
+            timeout(time: 1, unit: 'HOURS') 
+         }
+         steps {
+            input message: "Deploy?"
+         }
+         post {
+            success {
+               echo "Production Deploy Approved"
+            }
+            aborted {
+               echo "Production Deploy Denied"
+            }
+         }
+      }
         //stage 'Checkout'
 		//checkout scm
 
