@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('environment variable checking') {
 		when {
-			 branch 'origin/master'
+			 branch 'refs/remotes/origin/master'
 		    }
             steps {
                 echo "$GIT_BRANCH"
