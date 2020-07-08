@@ -14,7 +14,7 @@ pipeline {
     stages {
 	     stage('PrintParameter'){
             steps{
-                powershell 'echo ${HELLO}'
+                echo '${HELLO}'
             }
         }
         stage('environment variable checking') {
