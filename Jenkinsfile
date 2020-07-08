@@ -12,13 +12,14 @@ pipeline {
           }
 	
     stages {
-        stage('environment variable checking') {
-		
-		 stage('PrintParameter'){
+	     stage('PrintParameter'){
             steps{
-                sh 'echo ${HELLO}'
+                powershell 'echo ${HELLO}'
             }
         }
+        stage('environment variable checking') {
+		
+		
 		when {
 			 branch 'refs/remotes/origin/master'
 		    }
