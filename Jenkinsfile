@@ -4,6 +4,7 @@ pipeline {
     agent any
 	  parameters {
         string(defaultValue: "", description: 'K', name: 'HELLO')
+        choice(choices: ['Windows', 'Linux'], description: 'What OS?', name: 'PickAnOS')
     }
      environment {
         CONFIG = 'Release'
@@ -15,6 +16,8 @@ pipeline {
 	     stage('PrintParameter'){
             steps{
                 echo "${params.HELLO}"
+		     echo "${params.PickAnOS}"
+		    
             }
         }
         stage('environment variable checking') {
