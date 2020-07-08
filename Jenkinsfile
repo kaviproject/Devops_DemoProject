@@ -3,7 +3,7 @@ def SOLUTION_NAME="Devops_Demo"
 pipeline {
     agent any
 	  parameters {
-        string(defaultValue: "fgfgd", description: 'K', name: 'HELLO')
+        string(defaultValue: "", description: 'K', name: 'HELLO')
     }
      environment {
         CONFIG = 'Release'
@@ -14,7 +14,7 @@ pipeline {
     stages {
 	     stage('PrintParameter'){
             steps{
-                echo '${HELLO}'
+                echo ${HELLO}
             }
         }
         stage('environment variable checking') {
