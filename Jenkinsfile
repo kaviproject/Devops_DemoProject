@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('environment variable checking') {
             steps {
-                echo "Ok"
+                echo "$GIT_BRANCH"
 		echo "${env.CONFIG}"
 		echo "${env.NUGETPKG_LOCATION}"
 		powershell 'Write-Output "Hello, World!"'
