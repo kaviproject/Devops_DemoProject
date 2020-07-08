@@ -20,7 +20,12 @@ pipeline {
 		//powershell 'Write-Output "Hello, World!"'
 		    
             }
-        }    
+        }  
+	     stage('Sanity check') {
+            steps {
+                input "Does the staging environment look ok?"
+            }
+     }
 	  stage('Restoring Packages') {
             steps {
 		   // bat '"C:\\Program Files (X86)\\NuGet\\nuget.exe" restore ${SOLUTION_NAME}.sln'
