@@ -14,7 +14,7 @@ pipeline {
     stages {
 	     stage('PrintParameter'){
             steps{
-                echo ${HELLO}
+                echo "${params.HELLO}"
             }
         }
         stage('environment variable checking') {
