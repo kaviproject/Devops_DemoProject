@@ -78,6 +78,7 @@ pipeline {
   
       // bat 'C:\\"Program Files (x86)"\\IIS\\"Microsoft Web Deploy V3"\\msdeploy.exe -verb:sync -source:package="C:\\Program Files (x86)\\Jenkins\\workspace\\POCPIPELINE\\TestJenkin_VS2019\\obj\\Release\\Package\\TestJenkin_VS2019.zip" -dest:auto,computername=%TRAGET_SERVER%,username=%STAGING_USERNAME%,password=%STAGING_PASSWORD% -setParam:name="IIS Web Application Name",value="Default Web Site\\ParupatikComputerCDDeploy"'
     }
+    }
         //stage 'Checkout'
 		//checkout scm
 
