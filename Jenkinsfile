@@ -10,11 +10,14 @@ pipeline {
 	
     stages {
         stage('environment variable checking') {
+		when {
+			 branch 'master'
+		    }
             steps {
                 echo "$GIT_BRANCH"
-		echo "${env.CONFIG}"
-		echo "${env.NUGETPKG_LOCATION}"
-		powershell 'Write-Output "Hello, World!"'
+		//echo "${env.CONFIG}"
+		//echo "${env.NUGETPKG_LOCATION}"
+		//powershell 'Write-Output "Hello, World!"'
 		    
             }
         }    
@@ -32,7 +35,7 @@ pipeline {
         }
 	 stage('Approve PROD Deploy') {
          when {
-            branch 'origin/master'
+            branch 'master'
          }
          options {
             timeout(time: 1, unit: 'HOURS') 
