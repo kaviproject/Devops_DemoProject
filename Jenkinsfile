@@ -1,5 +1,6 @@
 def NUGETPKG_LOCATION = "C:\\Program Files (X86)\\NuGet\\nuget.exe"
 def SOLUTION_NAME = "Devops_Demo"
+  env.DOCKERHUB_USERNAME = 'parupatik@cmog.org'
 pipeline {
     agent any
     parameters {
@@ -71,6 +72,30 @@ pipeline {
                 }
             }
         }
+        stage("Integration Test") {
+      try {
+        sh "docker build -t docker-ci-cd ."
+        sh "docker rm -f docker-ci-cd || true"
+        sh "docker run -d  -p 9098:8080 --name=docker-ci-cd docker-ci-cd"
+        // env variable is used to set the server where go test will connect to run the test
+        sh "docker run --rm -v ${WORKSPACE}:/go/src/docker-ci-cd --link=docker-ci-cd -e SERVER=docker-ci-cd golang go test docker-ci-cd -v --run Integration"
+      }
+      catch(e) {
+        error "Integration Test failed"
+      }finally {
+        sh "docker rm -f docker-ci-cd || true"
+        sh "docker ps -aq | xargs docker rm || true"
+        sh "docker images -aq -f dangling=true | xargs docker rmi || true"
+      }
+    }
+    stage("Build") {
+      sh "docker build -t ${DOCKERHUB_USERNAME}/docker-ci-cd:${BUILD_NUMBER} ."
+    }
+    stage("Publish") {
+      withDockerRegistry([credentialsId: 'DockerHub']) {
+        sh "docker push ${DOCKERHUB_USERNAME}/docker-ci-cd:${BUILD_NUMBER}"
+      }
+    }
        /* stage('Deploy') {
             withCredentials([usernamePassword(credentialsId: '4b9640e9-311b-4539-8b0d-064ba3df7ea7', passwordVariable: 'STAGING_PASSWORD', usernameVariable: 'STAGING_USERNAME')]) {
 
